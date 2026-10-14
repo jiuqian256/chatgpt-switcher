@@ -1,9 +1,7 @@
-# ChatGPT Switcher for Windows
+﻿# ChatGPT Switcher for Windows
 
-Windowsで**ChatGPTデスクトップアプリ**の複数アカウントを、Googleのアカウント切替のように切り替えるツールです。小さな一覧から選ぶと、そのアカウント専用のChatGPTウィンドウが開きます。複数アカウントの同時起動もできます。
-
-依存ゼロのPowerShellスクリプト1本。**インストール不要・常駐なし・約35KB・中身は全部読める。** 今のログインは「メイン」としてそのまま残ります。
-
+Windows銇?*ChatGPT銉囥偣銈儓銉冦儣銈儣銉?*銇鏁般偄銈偊銉炽儓銈掋€丟oogle銇偄銈偊銉炽儓鍒囨浛銇倛銇嗐伀鍒囥倞鏇裤亪銈嬨儎銉笺儷銇с仚銆傚皬銇曘仾涓€瑕с亱銈夐伕銇躲仺銆併仢銇偄銈偊銉炽儓灏傜敤銇瓹hatGPT銈︺偅銉炽儔銈︺亴闁嬨亶銇俱仚銆傝鏁般偄銈偊銉炽儓銇悓鏅傝捣鍕曘倐銇с亶銇俱仚銆?
+渚濆瓨銈笺儹銇甈owerShell銈广偗銉儣銉?鏈€?*銈ゃ兂銈广儓銉笺儷涓嶈銉诲父椐愩仾銇椼兓绱?5KB銉讳腑韬伅鍏ㄩ儴瑾倎銈嬨€?* 浠娿伄銉偘銈ゃ兂銇€屻儭銈ゃ兂銆嶃仺銇椼仸銇濄伄銇俱伨娈嬨倞銇俱仚銆?
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Platform: Windows](https://img.shields.io/badge/platform-Windows%2010%2F11-blue)
 ![PowerShell 5.1+](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE)
@@ -12,109 +10,72 @@ Windowsで**ChatGPTデスクトップアプリ**の複数アカウントを、Go
 
 ---
 
-## なぜ作ったか
+## 銇仠浣溿仯銇熴亱
 
-2026年時点で、ChatGPTの**Web版**は最大2アカウントの切替に対応しましたが、**デスクトップアプリ**（新しいMicrosoft Store版・パッケージ名 `OpenAI.Codex`）にはアカウント切替が一切ありません。毎回ログアウト→ログインが必要でした。
+2026骞存檪鐐广仹銆丆hatGPT銇?*Web鐗?*銇渶澶?銈偒銈︺兂銉堛伄鍒囨浛銇蹇溿仐銇俱仐銇熴亴銆?*銉囥偣銈儓銉冦儣銈儣銉?*锛堟柊銇椼亜Microsoft Store鐗堛兓銉戙儍銈便兗銈稿悕 `OpenAI.Codex`锛夈伀銇偄銈偊銉炽儓鍒囨浛銇屼竴鍒囥亗銈娿伨銇涖倱銆傛瘞鍥炪儹銈般偄銈︺儓鈫掋儹銈般偆銉炽亴蹇呰銇с仐銇熴€?
+銇撱伄銈广偗銉儣銉堛伅銆併儑銈广偗銉堛儍銉椼偄銉椼儶銇獹oogle棰ㄣ伄銈偒銈︺兂銉堝垏鏇裤倰涓庛亪銇俱仚銆傘儻銉炽偗銉儍銈仹鍚勩偄銈偊銉炽儓銆併仚銇广仸灏忋仌銇竴瑕с亱銈夈€?
+## 鐗归暦
 
-このスクリプトは、デスクトップアプリにGoogle風のアカウント切替を与えます。ワンクリックで各アカウント、すべて小さな一覧から。
+- **銈偒銈︺兂銉堜竴瑕?* 鈥?Google銇偄銈偊銉炽儓閬告姙銇倛銇嗐仾灏忕獡銇嬨倝璧峰嫊
+- **瀹屽叏鍒嗛洟** 鈥?銈偒銈︺兂銉堛仈銇ㄣ伀灏傜敤銇?Electron 銉︺兗銈躲兗銉囥兗銈裤仺 `CODEX_HOME` 銈掓寔銇ゃ伄銇с儹銈般偆銉炽亴娣枫仏銈夈仾銇?- **鍚屾檪璧峰嫊** 鈥?浠曚簨鐢ㄣ仺鍊嬩汉銈掑垾銈︺偅銉炽儔銈︺仹涓︺伖銇︿娇銇堛倠
+- **銈偒銈︺兂銉堝垾銈枫儳銉笺儓銈儍銉?* 鈥?鑷嫊浣滄垚銆傘儑銈广偗銉堛儍銉椼亱銈夌洿鎺ヨ捣鍕曘仹銇嶃倠
+- **銉堛儸銈ゅ父椐?* 鈥?銈裤偣銈儓銉偆銇父椐愩€傚乏銈儶銉冦偗銇т竴瑕с€佸彸銈儶銉冦偗銇у悇銈偒銈︺兂銉堛倰鐩存帴璧峰嫊
+- **浠娿伄銉偘銈ゃ兂銇仢銇伨銇?* 鈥?銆屻儭銈ゃ兂銆嶃仺銇椼仸琛ㄧず銆傜Щ琛屻倐涓婃浉銇嶃倐銇椼仾銇?- **銈ゃ兂銈广儓銉笺儷涓嶈銉讳緷瀛樸仾銇?* 鈥?PowerShell銈广偗銉儣銉堛仺 `.cmd` 銇犮亼銆傘儓銉偆甯搁銈掗伕銇般仾銇勯檺銈婁綍銈傚父椐愩仐銇亜
 
-## 特長
+## 2銇ゃ伄銉兗銉?
+鍚勩偄銈偊銉炽儓銇銇仼銇°倝銇嬨仹銇?
 
-- **アカウント一覧** — Googleのアカウント選択のような小窓から起動
-- **完全分離** — アカウントごとに専用の Electron ユーザーデータと `CODEX_HOME` を持つのでログインが混ざらない
-- **同時起動** — 仕事用と個人を別ウィンドウで並べて使える
-- **アカウント別ショートカット** — 自動作成。デスクトップから直接起動できる
-- **トレイ常駐** — タスクトレイに常駐。左クリックで一覧、右クリックで各アカウントを直接起動
-- **今のログインはそのまま** — 「メイン」として表示。移行も上書きもしない
-- **インストール不要・依存なし** — PowerShellスクリプトと `.cmd` だけ。トレイ常駐を選ばない限り何も常駐しない
-
-## 2つのモード
-
-各アカウントは次のどちらかです:
-
-- **分離モード（既定）** — 専用の Electron データと `CODEX_HOME` を持ち、ログインもCodexのプロジェクト/チャットも完全に別。**複数アカウントの同時起動が可能**。
-- **完全共有モード（`-Shared`）** — 実の `~/.codex` を使うので、**プロジェクト・チャット・設定が全アカウントで共有**（公式に近い挙動）。切替時に `auth.json` だけ差し替えます。**共有アカウントは1つずつ**（同じ `~/.codex` を2プロセスで触ると壊れ、現行Codex Desktopはシンボリックリンクしたセッションストアを拒否するため）。`auth.json` は毎回バックアップされ、失敗しても再ログインで復帰できます（プロジェクト/チャットは無傷）。
-
-完全共有アカウントの初回: 起動してログイン → `-SaveAuth <id>`（または一覧で右クリック→「現在のログインをこのアカウントとして保存」）。
-
-## 仕組み
-
-ChatGPTデスクトップアプリはElectron製で、次の2つで完全に別インスタンスを起動できます。
-
-| 何を | 設定方法 | 中身 |
+- **鍒嗛洟銉兗銉夛紙鏃㈠畾锛?* 鈥?灏傜敤銇?Electron 銉囥兗銈裤仺 `CODEX_HOME` 銈掓寔銇°€併儹銈般偆銉炽倐Codex銇儣銉偢銈с偗銉?銉併儯銉冦儓銈傚畬鍏ㄣ伀鍒ャ€?*瑜囨暟銈偒銈︺兂銉堛伄鍚屾檪璧峰嫊銇屽彲鑳?*銆?- **瀹屽叏鍏辨湁銉兗銉夛紙`-Shared`锛?* 鈥?瀹熴伄 `~/.codex` 銈掍娇銇嗐伄銇с€?*銉椼儹銈搞偋銈儓銉汇儊銉ｃ儍銉堛兓瑷畾銇屽叏銈偒銈︺兂銉堛仹鍏辨湁**锛堝叕寮忋伀杩戙亜鎸欏嫊锛夈€傚垏鏇挎檪銇?`auth.json` 銇犮亼宸仐鏇裤亪銇俱仚銆?*鍏辨湁銈偒銈︺兂銉堛伅1銇ゃ仛銇?*锛堝悓銇?`~/.codex` 銈?銉椼儹銈汇偣銇цЕ銈嬨仺澹娿倢銆佺従琛孋odex Desktop銇偡銉炽儨銉儍銈儶銉炽偗銇椼仧銈汇儍銈枫儳銉炽偣銉堛偄銈掓嫆鍚︺仚銈嬨仧銈侊級銆俙auth.json` 銇瘞鍥炪儛銉冦偗銈儍銉椼仌銈屻€佸け鏁椼仐銇︺倐鍐嶃儹銈般偆銉炽仹寰╁赴銇с亶銇俱仚锛堛儣銉偢銈с偗銉?銉併儯銉冦儓銇劇鍌凤級銆?
+瀹屽叏鍏辨湁銈偒銈︺兂銉堛伄鍒濆洖: 璧峰嫊銇椼仸銉偘銈ゃ兂 鈫?`-SaveAuth <id>`锛堛伨銇熴伅涓€瑕с仹鍙炽偗銉儍銈啋銆岀従鍦ㄣ伄銉偘銈ゃ兂銈掋亾銇偄銈偊銉炽儓銇ㄣ仐銇︿繚瀛樸€嶏級銆?
+## 浠曠祫銇?
+ChatGPT銉囥偣銈儓銉冦儣銈儣銉伅Electron瑁姐仹銆佹銇?銇ゃ仹瀹屽叏銇垾銈ゃ兂銈广偪銉炽偣銈掕捣鍕曘仹銇嶃伨銇欍€?
+| 浣曘倰 | 瑷畾鏂规硶 | 涓韩 |
 |------|----------|------|
-| Electron のユーザーデータ | 環境変数 `CODEX_ELECTRON_USER_DATA_PATH` + 起動引数 `--user-data-dir=` | Cookie（=ChatGPTのログイン）、ローカル設定、キャッシュ |
-| Codex のホーム | 環境変数 `CODEX_HOME` | `auth.json`、セッション、設定 |
+| Electron 銇儲銉笺偠銉笺儑銉笺偪 | 鐠板澶夋暟 `CODEX_ELECTRON_USER_DATA_PATH` + 璧峰嫊寮曟暟 `--user-data-dir=` | Cookie锛?ChatGPT銇儹銈般偆銉筹級銆併儹銉笺偒銉ō瀹氥€併偔銉ｃ儍銈枫儱 |
+| Codex 銇儧銉笺儬 | 鐠板澶夋暟 `CODEX_HOME` | `auth.json`銆併偦銉冦偡銉с兂銆佽ō瀹?|
 
-各アカウントは `%USERPROFILE%\ChatGPT-Accounts\<id>\` 以下の `electron` / `codex` フォルダを持つだけ。そこを指して `ChatGPT.exe` を起動します。macOS向けの [ccheney/chatgpt-multi-account](https://github.com/ccheney/chatgpt-multi-account) や [Ducksss/codex-profiles](https://github.com/Ducksss/codex-profiles) と同じ方式です。
-
-## 必要環境
+鍚勩偄銈偊銉炽儓銇?`%USERPROFILE%\ChatGPT-Accounts\<id>\` 浠ヤ笅銇?`electron` / `codex` 銉曘偐銉儉銈掓寔銇ゃ仩銇戙€傘仢銇撱倰鎸囥仐銇?`ChatGPT.exe` 銈掕捣鍕曘仐銇俱仚銆俶acOS鍚戙亼銇?[ccheney/chatgpt-multi-account](https://github.com/ccheney/chatgpt-multi-account) 銈?[Ducksss/codex-profiles](https://github.com/Ducksss/codex-profiles) 銇ㄥ悓銇樻柟寮忋仹銇欍€?
+## 蹇呰鐠板
 
 - Windows 10 / 11
-- 公式**ChatGPTデスクトップアプリ**（[Microsoft Store](https://apps.microsoft.com/) または `winget install --id 9PLM9XGG6VKS -s msstore`）
-- Windows PowerShell 5.1（標準搭載）または PowerShell 7+
+- 鍏紡**ChatGPT銉囥偣銈儓銉冦儣銈儣銉?*锛圼Microsoft Store](https://apps.microsoft.com/) 銇俱仧銇?`winget install --id 9PLM9XGG6VKS -s msstore`锛?- Windows PowerShell 5.1锛堟婧栨惌杓夛級銇俱仧銇?PowerShell 7+
 
-## 導入
+## 灏庡叆
 
-### 方法A — ワンライナー（おすすめ）
+### 鏂规硶A 鈥?銉兂銉┿偆銉娿兗锛堛亰銇欍仚銈侊級
 
-PowerShellで実行:
+PowerShell銇у疅琛?
 
 ```powershell
-irm https://raw.githubusercontent.com/__OWNER__/__REPO__/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/jiuqian256/chatgpt-switcher/main/install.ps1 | iex
 ```
 
-`Documents\ChatGPT-Switcher` にスクリプトを置き、スタートメニューとデスクトップにショートカットを作ります。システムには何もインストールされません。
+`Documents\ChatGPT-Switcher` 銇偣銈儶銉椼儓銈掔疆銇嶃€併偣銈裤兗銉堛儭銉嬨儱銉笺仺銉囥偣銈儓銉冦儣銇偡銉с兗銉堛偒銉冦儓銈掍綔銈娿伨銇欍€傘偡銈广儐銉犮伀銇綍銈傘偆銉炽偣銉堛兗銉仌銈屻伨銇涖倱銆?
+### 鏂规硶B 鈥?鎵嬪嫊
 
-### 方法B — 手動
-
-1. このリポジトリをダウンロード（緑の **Code** → Download ZIP）またはクローン。
-2. `ChatGPT-Switcher` フォルダを好きな場所（例: `Documents\ChatGPT-Switcher`）に置く。
-3. `ChatGPT-Switcher.cmd` をダブルクリック。
-
-実行ポリシーの変更は不要です（そのプロセスだけ `-ExecutionPolicy Bypass` で動きます）。
-
-## 使い方
-
-**`ChatGPT-Switcher.cmd`** をダブルクリック → 一覧が開く。
-
-1. **＋ アカウントを追加** → 名前を入力（仕事用 / 個人 …）。
-2. 新しいChatGPTウィンドウがサインイン画面で開く → そのアカウントでログイン。
-3. 以降は一覧をクリックするだけ。`ChatGPT - 〇〇` のデスクトップショートカットも作られます。
-
-一覧で右クリックすると **ショートカット作成 / 名前変更 / 削除**。今のログインは常に **メイン** として表示されます。
-
-### コマンドライン
-
+1. 銇撱伄銉儩銈搞儓銉倰銉€銈︺兂銉兗銉夛紙绶戙伄 **Code** 鈫?Download ZIP锛夈伨銇熴伅銈儹銉笺兂銆?2. `ChatGPT-Switcher` 銉曘偐銉儉銈掑ソ銇嶃仾鍫存墍锛堜緥: `Documents\ChatGPT-Switcher`锛夈伀缃亸銆?3. `ChatGPT-Switcher.cmd` 銈掋儉銉栥儷銈儶銉冦偗銆?
+瀹熻銉濄儶銈枫兗銇鏇淬伅涓嶈銇с仚锛堛仢銇儣銉偦銈广仩銇?`-ExecutionPolicy Bypass` 銇у嫊銇嶃伨銇欙級銆?
+## 浣裤亜鏂?
+**`ChatGPT-Switcher.cmd`** 銈掋儉銉栥儷銈儶銉冦偗 鈫?涓€瑕с亴闁嬨亸銆?
+1. **锛?銈偒銈︺兂銉堛倰杩藉姞** 鈫?鍚嶅墠銈掑叆鍔涳紙浠曚簨鐢?/ 鍊嬩汉 鈥︼級銆?2. 鏂般仐銇凜hatGPT銈︺偅銉炽儔銈︺亴銈点偆銉炽偆銉崇敾闈仹闁嬨亸 鈫?銇濄伄銈偒銈︺兂銉堛仹銉偘銈ゃ兂銆?3. 浠ラ檷銇竴瑕с倰銈儶銉冦偗銇欍倠銇犮亼銆俙ChatGPT - 銆囥€嘸 銇儑銈广偗銉堛儍銉椼偡銉с兗銉堛偒銉冦儓銈備綔銈夈倢銇俱仚銆?
+涓€瑕с仹鍙炽偗銉儍銈仚銈嬨仺 **銈枫儳銉笺儓銈儍銉堜綔鎴?/ 鍚嶅墠澶夋洿 / 鍓婇櫎**銆備粖銇儹銈般偆銉炽伅甯搞伀 **銉°偆銉?* 銇ㄣ仐銇﹁〃绀恒仌銈屻伨銇欍€?
+### 銈炽優銉炽儔銉┿偆銉?
 ```
-ChatGPT-Switcher.cmd                  一覧を開く
-ChatGPT-Switcher.cmd -Launch 仕事用    指定アカウントで起動（起動中なら前面へ）
-ChatGPT-Switcher.cmd -Add 仕事用       追加（+デスクトップにショートカット）
-ChatGPT-Switcher.cmd -Remove 仕事用    削除（このPCのそのアカウントのログイン/キャッシュを削除）
-ChatGPT-Switcher.cmd -List            一覧表示
-ChatGPT-Switcher.cmd -Setup           一覧のショートカットをデスクトップ/スタートに作成
-ChatGPT-Switcher.cmd -Tray            タスクトレイ常駐
-ChatGPT-Switcher.cmd -AutoStartTray   トレイ常駐をWindows起動時に自動開始
-ChatGPT-Switcher.cmd -Diagnose        環境診断
-ChatGPT-Switcher.cmd -Version         バージョン表示
-```
+ChatGPT-Switcher.cmd                  涓€瑕с倰闁嬨亸
+ChatGPT-Switcher.cmd -Launch 浠曚簨鐢?   鎸囧畾銈偒銈︺兂銉堛仹璧峰嫊锛堣捣鍕曚腑銇倝鍓嶉潰銇革級
+ChatGPT-Switcher.cmd -Add 浠曚簨鐢?      杩藉姞锛?銉囥偣銈儓銉冦儣銇偡銉с兗銉堛偒銉冦儓锛?ChatGPT-Switcher.cmd -Remove 浠曚簨鐢?   鍓婇櫎锛堛亾銇甈C銇仢銇偄銈偊銉炽儓銇儹銈般偆銉?銈儯銉冦偡銉ャ倰鍓婇櫎锛?ChatGPT-Switcher.cmd -List            涓€瑕ц〃绀?ChatGPT-Switcher.cmd -Setup           涓€瑕с伄銈枫儳銉笺儓銈儍銉堛倰銉囥偣銈儓銉冦儣/銈广偪銉笺儓銇綔鎴?ChatGPT-Switcher.cmd -Tray            銈裤偣銈儓銉偆甯搁
+ChatGPT-Switcher.cmd -AutoStartTray   銉堛儸銈ゅ父椐愩倰Windows璧峰嫊鏅傘伀鑷嫊闁嬪
+ChatGPT-Switcher.cmd -Diagnose        鐠板瑷烘柇
+ChatGPT-Switcher.cmd -Version         銉愩兗銈搞儳銉宠〃绀?```
 
-## 注意・制限
+## 娉ㄦ剰銉诲埗闄?
+- **銈点兗銉愩兗鍋?*銇饱姝淬兓銉°儮銉兓瑾查噾銇偄銈偊銉炽儓銇斻仺銇垾銇伨銇俱€傘儹銉笺偒銉伄銈汇儍銈枫儳銉炽倰鍒嗐亼銇︺亜銈嬨仩銇戙仹銆佸叡鏈夈倐绲卞悎銈傘仐銇俱仜銈撱€?- 鍏ㄣ偊銈ｃ兂銉夈偊銇偪銈广偗銉愩兗銈偆銈炽兂銇悓銇樸仹銇欍€傚垽鍒ャ伅銈儣銉乏涓嬨伄銈儛銈裤兗銆併伨銇熴伅涓€瑕с伄銆屸棌 璧峰嫊涓€嶈〃绀恒仹銆?- 銈儣銉伄銈儍銉椼儑銉笺儓銇у唴閮ㄤ粫妲樸亴澶夈倧銈嬨仺璧峰嫊銇с亶銇亸銇倠鍙兘鎬с亴銇傘倞銇俱仚銆俙-Diagnose` 銇嚭鍔涖倰娣汇亪銇ssue銈掔珛銇︺仸銇忋仩銇曘亜銆?- 瑜囨暟銈偒銈︺兂銉堛伄鎵€鎸佽嚜浣撱伅OpenAI銇绱勩仹绂佹銇曘倢銇︺亜銇俱仜銈撱亴銆?*Team/Enterprise銇鐞嗐儻銉笺偗銈广儦銉笺偣**銇с伅绠＄悊鑰呫伄銉濄儶銈枫兗銇緭銇ｃ仸銇忋仩銇曘亜銆?- 銇撱倢銇?*闈炲叕寮?*銉勩兗銉仹銆丱penAI銇ㄣ伅鐒￠枹淇傘仹銇欍€傝嚜宸辫铂浠汇仹鍒╃敤銇椼仸銇忋仩銇曘亜锛圼LICENSE](LICENSE) 鍙傜収锛夈€?
+## 銈兂銈ゃ兂銈广儓銉笺儷
 
-- **サーバー側**の履歴・メモリ・課金はアカウントごとに別のまま。ローカルのセッションを分けているだけで、共有も統合もしません。
-- 全ウィンドウのタスクバーアイコンは同じです。判別はアプリ左下のアバター、または一覧の「● 起動中」表示で。
-- アプリのアップデートで内部仕様が変わると起動できなくなる可能性があります。`-Diagnose` の出力を添えてissueを立ててください。
-- 複数アカウントの所持自体はOpenAIの規約で禁止されていませんが、**Team/Enterpriseの管理ワークスペース**では管理者のポリシーに従ってください。
-- これは**非公式**ツールで、OpenAIとは無関係です。自己責任で利用してください（[LICENSE](LICENSE) 参照）。
+`ChatGPT-Switcher` 銉曘偐銉儉銇ㄣ偡銉с兗銉堛偒銉冦儓銆侊紙蹇呰銇倝锛塦%USERPROFILE%\ChatGPT-Accounts` 銈掑墛闄ゃ仚銈嬨仩銇戙仹銇欍€?
+## 銈炽兂銉堛儶銉撱儱銉笺儓
 
-## アンインストール
-
-`ChatGPT-Switcher` フォルダとショートカット、（必要なら）`%USERPROFILE%\ChatGPT-Accounts` を削除するだけです。
-
-## コントリビュート
-
-Issue / PR 歓迎です（[CONTRIBUTING.md](CONTRIBUTING.md)）。設計上、小さな1ファイルツールに保つ方針です。
-
-## ライセンス
-
+Issue / PR 姝撹繋銇с仚锛圼CONTRIBUTING.md](CONTRIBUTING.md)锛夈€傝ō瑷堜笂銆佸皬銇曘仾1銉曘偂銈ゃ儷銉勩兗銉伀淇濄仱鏂归嚌銇с仚銆?
+## 銉┿偆銈汇兂銈?
 [MIT](LICENSE)
+
